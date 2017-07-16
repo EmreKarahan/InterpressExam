@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace InterpressExam.WCF.Service
+namespace InterpressExam.Service.Wcf
 {
-    public class Service1 : IService1
+    public class ListenService : IListenService
     {
         public void FireDatabaseEvents()
         {

@@ -1,9 +1,9 @@
 ﻿using System.ServiceModel;
 
-namespace InterpressExam.WCF.Service
+namespace InterpressExam.Service.Wcf
 {    
     [ServiceContract]
-    public interface IService1
+    public interface IListenService
     {
 
         [OperationContract]
