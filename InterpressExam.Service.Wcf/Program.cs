@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ServiceProcess;
 using Microsoft.Owin.Hosting;
 
 namespace InterpressExam.Service.Wcf
@@ -7,12 +8,13 @@ namespace InterpressExam.Service.Wcf
     {
         static void Main(string[] args)
         {
-            string url = "http://localhost:1454";
-            using (WebApp.Start(url))
+
+
+            var servicesToRun = new ServiceBase[]
             {
-                Console.WriteLine("Server running on {0}", url);
-                Console.ReadLine();
-            }
+                new ListenWcfService()
+            };
+            ServiceBase.Run(servicesToRun);
         }
     }
 }
