@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterpressExam.Bll", "Inter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterpressExam.Service.Wcf", "InterpressExam.Service.Wcf\InterpressExam.Service.Wcf.csproj", "{1EF2F89D-41C2-465E-8525-E2AC6FCECE27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterpressExam.Service.Windows.Downloader", "InterpressExam.Service.Windows.Downloader\InterpressExam.Service.Windows.Downloader.csproj", "{00467595-2A7C-4A1F-B8E5-A9A3794D6BE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{C2EC609F-AC1C-482D-929B-D94361A92269}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,10 @@ Global
 		{1EF2F89D-41C2-465E-8525-E2AC6FCECE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EF2F89D-41C2-465E-8525-E2AC6FCECE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EF2F89D-41C2-465E-8525-E2AC6FCECE27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00467595-2A7C-4A1F-B8E5-A9A3794D6BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00467595-2A7C-4A1F-B8E5-A9A3794D6BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00467595-2A7C-4A1F-B8E5-A9A3794D6BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00467595-2A7C-4A1F-B8E5-A9A3794D6BE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +74,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{789F2275-09BE-4A57-BDBD-2FF33DF490EF} = {A8B46B00-8D66-435D-980D-F48B588A227A}
 		{0B17CF31-7F15-41CF-84A9-312ACE2FD793} = {A8B46B00-8D66-435D-980D-F48B588A227A}
+		{1EF2F89D-41C2-465E-8525-E2AC6FCECE27} = {C2EC609F-AC1C-482D-929B-D94361A92269}
+		{00467595-2A7C-4A1F-B8E5-A9A3794D6BE7} = {C2EC609F-AC1C-482D-929B-D94361A92269}
 	EndGlobalSection
 EndGlobal
