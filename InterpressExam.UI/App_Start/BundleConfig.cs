@@ -23,6 +23,9 @@ namespace InterpressExam.UI
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
+                "~/Scripts/jquery.signalR-2.2.2.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/handlebar").Include(
                 "~/Scripts/handlebars-v4.0.10.js"));
 
