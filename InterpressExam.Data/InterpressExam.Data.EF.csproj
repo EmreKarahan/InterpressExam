@@ -50,6 +50,7 @@
     <Compile Include="BaseRepository.cs" />
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="IDbContextFactory.cs" />
+    <Compile Include="Impl\CustomerRepository.cs" />
     <Compile Include="Impl\RssItemRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

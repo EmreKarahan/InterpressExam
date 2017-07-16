@@ -24,5 +24,16 @@ namespace InterpressExam.Data.Impl
         {
             return Context.RssItem.Where(predicate);
         }
+
+        public void Add(RssItem rssItem)
+        {
+            Context.RssItem.Add(rssItem);
+            Context.SaveChanges();
+        }
+
+        public IEnumerable<RssFile> GetList()
+        {
+            return Context.RssFile.ToList();
+        }
     }
 }

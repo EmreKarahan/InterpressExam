@@ -5,11 +5,8 @@ namespace InterpressExam.UI.Controllers
 {
     public class HomeController : Controller
     {
-        private IRssItemRepository _itemRepository;
-
-        public HomeController(IRssItemRepository itemRepository)
+        public HomeController()
         {
-            _itemRepository = itemRepository;
         }
 
         public ActionResult Index()

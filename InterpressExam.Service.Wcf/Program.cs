@@ -8,7 +8,7 @@ namespace InterpressExam.Service.Wcf
     {
         static void Main(string[] args)
         {
-
+            WindsorBootstrapper.Register();
 
             var servicesToRun = new ServiceBase[]
             {

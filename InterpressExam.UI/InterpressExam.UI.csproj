@@ -217,6 +217,10 @@
       <Project>{3F5CAAED-E7B0-4175-847E-7A345C7DA2B0}</Project>
       <Name>InterpressExam.Data.EF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InterpressExam.Entity\InterpressExam.Entity.csproj">
+      <Project>{BA2ABA8D-0850-4B36-9DF6-BD85302BE9C5}</Project>
+      <Name>InterpressExam.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

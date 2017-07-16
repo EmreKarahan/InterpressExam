@@ -7,7 +7,9 @@ namespace InterpressExam.Service.Windows.Downloader
         static void Main(string[] args)
         {
 
-#if DEBUG
+           
+
+#if !DEBUG
 
             var servicesToRun = new ServiceBase[]
             {
@@ -15,7 +17,7 @@ namespace InterpressExam.Service.Windows.Downloader
             };
             ServiceBase.Run(servicesToRun);
 #endif
-#if !DEBUG
+#if DEBUG
             new DownloadRssService().RegisterJobs();
 #endif
         }

@@ -16,6 +16,8 @@ namespace InterpressExam.Service.Wcf.Service
             var rss = context.RssItem.ToList();
 
             BroadcastToClients(rss);
+            Mailer.Mailer mailer = new Mailer.Mailer();
+
         }
 
         private void BroadcastToClients(List<RssItem> rss)

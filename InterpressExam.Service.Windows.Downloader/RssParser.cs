@@ -1,21 +1,21 @@
-﻿using System;
-using System.Linq;
-using System.ServiceModel.Syndication;
-using System.Threading;
-using System.Xml;
+﻿using System.ServiceModel.Syndication;
+using InterpressExam.Data.Contract;
 using InterpressExam.Entity;
+using InterpressExam.Infrastructure.IoC;
 using InterpressExam.Infrastructure.Parser;
 using InterpressExam.Service.Windows.Downloader.ListenSrvRef;
 using Quartz;
-using Quartz.Impl;
-using Quartz.Impl.Triggers;
-using Quartz.Job;
 
 namespace InterpressExam.Service.Windows.Downloader
 {
     public class RssParserService : IJob
     {
-        private readonly RssContext Entities = new RssContext();
+        private readonly IRssItemRepository _rssItemRepository;
+
+        public RssParserService()
+        {
+            _rssItemRepository = ContainerManager.Container.Resolve<IRssItemRepository>();
+        }
 
         public void GetFeed(RssFile file)
         {
@@ -38,9 +38,8 @@ namespace InterpressExam.Service.Windows.Downloader
                     Link = item.Id
 
                 };
-                Entities.RssItem.Add(rssItem);
-            }
-            Entities.SaveChanges();
+                _rssItemRepository.Add(rssItem);
+            }           
             ListenServiceClient aa = new ListenServiceClient();
             aa.FireDatabaseEvents();
 
@@ -48,7 +47,7 @@ namespace InterpressExam.Service.Windows.Downloader
 
         public void Execute(IJobExecutionContext context)
         {
-            var files = Entities.RssFile.ToList();
+            var files = _rssItemRepository.GetList();
 
             foreach (RssFile file in files)
             {

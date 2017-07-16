@@ -18,14 +18,16 @@ namespace InterpressExam.Service.Windows.Downloader
 
         public void RegisterJobs()
         {
+            
             try
             {
                 new Thread(delegate ()
                 {
+                    WindsorBootstrapper.Register();
                     IScheduler scheduler = new StdSchedulerFactory().GetScheduler();
 
                     JobDetailImpl jobdetailLiveScore = new JobDetailImpl("rssJob", null, typeof(RssParserService));
-                    SimpleTriggerImpl triggerLiveScore = new SimpleTriggerImpl(string.Format("{0}Trigger_", "rssJob"), DateTime.Now.AddSeconds(1), null, SimpleTriggerImpl.RepeatIndefinitely, TimeSpan.FromMinutes(1));
+                    SimpleTriggerImpl triggerLiveScore = new SimpleTriggerImpl(string.Format("{0}Trigger_", "rssJob"), DateTime.Now.AddSeconds(1), null, SimpleTriggerImpl.RepeatIndefinitely, TimeSpan.FromSeconds(10));
                     scheduler.ScheduleJob(jobdetailLiveScore, triggerLiveScore);
 
 
@@ -36,7 +38,7 @@ namespace InterpressExam.Service.Windows.Downloader
             }
             catch (Exception ex)
             {
-                System.Diagnostics.EventLog.WriteEntry("Newspaper.Service.Windows.ScheduleJobs",
+                System.Diagnostics.EventLog.WriteEntry("err",
                     $"{ex.Message} - {ex.StackTrace}", System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }

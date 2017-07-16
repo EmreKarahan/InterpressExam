@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.4.0.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -96,6 +102,7 @@
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Hub\RssHub.cs" />
+    <Compile Include="Mailer\SendMail.cs" />
     <Compile Include="Service\IListenService.cs" />
     <Compile Include="Service\ListenService.svc.cs">
       <DependentUpon>ListenService.svc</DependentUpon>
@@ -114,6 +121,7 @@
     <Compile Include="ListenWcfService.designer.cs">
       <DependentUpon>ListenWcfService.cs</DependentUpon>
     </Compile>
+    <Compile Include="WindsorBootstrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -128,6 +136,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InterpressExam.Data.Contract\InterpressExam.Data.Contract.csproj">
+      <Project>{EF481DFA-30D8-40FF-AA77-6CAF5CDC5C9C}</Project>
+      <Name>InterpressExam.Data.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterpressExam.Data\InterpressExam.Data.EF.csproj">
+      <Project>{3F5CAAED-E7B0-4175-847E-7A345C7DA2B0}</Project>
+      <Name>InterpressExam.Data.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InterpressExam.Entity\InterpressExam.Entity.csproj">
       <Project>{BA2ABA8D-0850-4B36-9DF6-BD85302BE9C5}</Project>
       <Name>InterpressExam.Entity</Name>

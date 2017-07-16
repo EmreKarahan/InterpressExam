@@ -6,7 +6,7 @@ namespace InterpressExam.Entity
 
     [Table("RssItem")]
     public partial class RssItem
-    {       
+    {
         public int Id { get; set; }
 
         public int RssFileId { get; set; }
@@ -23,5 +23,7 @@ namespace InterpressExam.Entity
 
         [StringLength(1500)]
         public string Description { get; set; }
+
+        public virtual RssFile RssFile { get; set; }
     }
 }
