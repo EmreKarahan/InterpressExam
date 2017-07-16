@@ -9,7 +9,7 @@ namespace InterpressExam.UI.Controllers
             return View();
         }
 
-        [ChildActionOnly]
+        //[ChildActionOnly]
         public PartialViewResult RssItems()
         {
             return PartialView("_RssItems");

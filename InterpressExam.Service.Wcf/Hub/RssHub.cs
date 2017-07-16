@@ -1,10 +1,15 @@
-﻿namespace InterpressExam.Service.Wcf.Hub
+﻿using System.Linq;
+using InterpressExam.Entity;
+
+namespace InterpressExam.Service.Wcf.Hub
 {
     public class RssHub : Microsoft.AspNet.SignalR.Hub
     {
-        public void Send(string name, string message)
+        public void Fetch()
         {
-            Clients.All.addMessage(name, message);
+            RssContext context = new RssContext();
+            var rss = context.RssItem.ToList();
+            Clients.All.addMessage(rss);
         }
     }
 }

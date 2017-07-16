@@ -123,6 +123,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Scripts\ajaxmanager.js" />
+    <Content Include="Scripts\constant.js" />
     <Content Include="Scripts\rss.js" />
   </ItemGroup>
   <ItemGroup>

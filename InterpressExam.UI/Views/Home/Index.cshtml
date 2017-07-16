@@ -2,10 +2,14 @@
     ViewBag.Title = "Home Page";
 }
 
+<div id="root">
+    @Html.Partial("_RssItems")
+</div>
 
 @section scripts
 {
     @Scripts.Render("~/bundles/signalr")
+    <script src="//localhost:1454/signalr/hubs" type="text/javascript"></script>
     @Scripts.Render("~/bundles/handlebar")
     @Scripts.Render("~/bundles/rss")
 }

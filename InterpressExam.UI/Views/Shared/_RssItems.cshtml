@@ -1,7 +1,20 @@
-﻿
+﻿<h1>Handlebars JS Example</h1>
+<script id="some-template" type="text/x-handlebars-template">
+ {{get_length rss}}
+    <table>
+        <thead>
+        <th>Name</th>
+        <th>Job Title</th>
+        <th>Twitter</th>
+        </thead>
+        <tbody>
+            {{#rss}}
+            <tr>
+                <td>{{Title}}</td>
+                <td>{{Description}}</td>                
+            </tr>
+            {{/rss}}
+        </tbody>
+    </table>
 
-<div class="row">
-    {{#each people}}
-    <li>{{this}}</li>
-    {{/each}}
-</div>
+</script>

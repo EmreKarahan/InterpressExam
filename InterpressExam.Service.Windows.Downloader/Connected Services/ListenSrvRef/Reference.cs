@@ -20,12 +20,6 @@ namespace InterpressExam.Service.Windows.Downloader.ListenSrvRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IListenService/FireDatabaseEvents", ReplyAction="http://tempuri.org/IListenService/FireDatabaseEventsResponse")]
         System.Threading.Tasks.Task FireDatabaseEventsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IListenService/BroadcastToClients", ReplyAction="http://tempuri.org/IListenService/BroadcastToClientsResponse")]
-        void BroadcastToClients();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IListenService/BroadcastToClients", ReplyAction="http://tempuri.org/IListenService/BroadcastToClientsResponse")]
-        System.Threading.Tasks.Task BroadcastToClientsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -61,14 +55,6 @@ namespace InterpressExam.Service.Windows.Downloader.ListenSrvRef {
         
         public System.Threading.Tasks.Task FireDatabaseEventsAsync() {
             return base.Channel.FireDatabaseEventsAsync();
-        }
-        
-        public void BroadcastToClients() {
-            base.Channel.BroadcastToClients();
-        }
-        
-        public System.Threading.Tasks.Task BroadcastToClientsAsync() {
-            return base.Channel.BroadcastToClientsAsync();
         }
     }
 }

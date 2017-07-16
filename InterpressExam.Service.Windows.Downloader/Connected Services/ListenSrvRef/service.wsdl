@@ -44,20 +44,10 @@
   <wsdl:message name="IListenService_FireDatabaseEvents_OutputMessage">
     <wsdl:part name="parameters" element="tns:FireDatabaseEventsResponse" />
   </wsdl:message>
-  <wsdl:message name="IListenService_BroadcastToClients_InputMessage">
-    <wsdl:part name="parameters" element="tns:BroadcastToClients" />
-  </wsdl:message>
-  <wsdl:message name="IListenService_BroadcastToClients_OutputMessage">
-    <wsdl:part name="parameters" element="tns:BroadcastToClientsResponse" />
-  </wsdl:message>
   <wsdl:portType name="IListenService">
     <wsdl:operation name="FireDatabaseEvents">
       <wsdl:input wsaw:Action="http://tempuri.org/IListenService/FireDatabaseEvents" message="tns:IListenService_FireDatabaseEvents_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IListenService/FireDatabaseEventsResponse" message="tns:IListenService_FireDatabaseEvents_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="BroadcastToClients">
-      <wsdl:input wsaw:Action="http://tempuri.org/IListenService/BroadcastToClients" message="tns:IListenService_BroadcastToClients_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IListenService/BroadcastToClientsResponse" message="tns:IListenService_BroadcastToClients_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WCFServiceHostNetTcpEndPoint" type="tns:IListenService">
@@ -66,15 +56,6 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="FireDatabaseEvents">
       <soap12:operation soapAction="http://tempuri.org/IListenService/FireDatabaseEvents" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="BroadcastToClients">
-      <soap12:operation soapAction="http://tempuri.org/IListenService/BroadcastToClients" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

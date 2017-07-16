@@ -10,14 +10,4 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="BroadcastToClients">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="BroadcastToClientsResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
 </xs:schema>

@@ -39,7 +39,7 @@
             // 
             // serviceInstaller2
             // 
-            this.serviceInstaller2.ServiceName = "SalesTrxService";
+            this.serviceInstaller2.ServiceName = "InterpressExam.Service.Windows.Downloader";
             // 
             // ProjectInstaller
             // 

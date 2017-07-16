@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Linq;
+using System.Web;
 using System.Web.Optimization;
 
 namespace InterpressExam.UI
@@ -30,13 +31,23 @@ namespace InterpressExam.UI
                 "~/Scripts/handlebars-v4.0.10.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/rss").Include(
+                "~/Scripts/constant.js",
+                "~/Scripts/ajaxmanager.js",
                 "~/Scripts/rss.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            BundleTable.EnableOptimizations = true;
+
+            if (HttpContext.Current.IsDebuggingEnabled)
+            {
+                BundleTable.Bundles.ToList().ForEach(b => b.Transforms.Clear());
+            }
+            else
+            {
+                BundleTable.EnableOptimizations = true;
+            }
         }
     }
 }

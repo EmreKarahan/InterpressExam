@@ -19,8 +19,8 @@ namespace InterpressExam.Service.Wcf
 
             MyServiceHost = new ServiceHost(typeof(ListenService));
 
-            //string url = "http://localhost:1454";
-            //WebApp.Start(url);
+            string url = "http://localhost:1454";
+            WebApp.Start(url);
             MyServiceHost.Open();
         }
 
