@@ -1,6 +1,6 @@
-﻿using System;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 using System.ServiceProcess;
+using InterpressExam.Service.Wcf.Service;
 using Microsoft.Owin.Hosting;
 
 namespace InterpressExam.Service.Wcf
@@ -19,14 +19,8 @@ namespace InterpressExam.Service.Wcf
 
             MyServiceHost = new ServiceHost(typeof(ListenService));
 
-            string url = "http://localhost:1454";
-            WebApp.Start(url);
-            //using (WebApp.Start(url))
-            //{
-            //Console.WriteLine("Server running on {0}", url);
-            //Console.ReadLine();
-            // }
-
+            //string url = "http://localhost:1454";
+            //WebApp.Start(url);
             MyServiceHost.Open();
         }
 

@@ -6,8 +6,7 @@ namespace InterpressExam.Entity
 
     [Table("RssItem")]
     public partial class RssItem
-    {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    {       
         public int Id { get; set; }
 
         public int RssFileId { get; set; }
@@ -22,7 +21,7 @@ namespace InterpressExam.Entity
         [StringLength(100)]
         public string Link { get; set; }
 
-        [StringLength(400)]
+        [StringLength(1500)]
         public string Description { get; set; }
     }
 }
