@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="InterpressExam.Service.Wcf.Service.ListenService" CodeBehind="ListenService.svc.cs" %>
