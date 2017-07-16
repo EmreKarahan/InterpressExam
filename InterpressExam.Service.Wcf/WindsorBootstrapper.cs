@@ -23,17 +23,6 @@ namespace InterpressExam.Service.Wcf
                     .For<ICustomeRepository>()
                     .ImplementedBy<CustomerRepository>()
                     .LifestyleTransient());
-
-         
-
-            // show contents of container
-            foreach (var handler in container.Kernel
-                .GetAssignableHandlers(typeof(object)))
-            {
-                Console.WriteLine("{0} {1}",
-                    handler.ComponentModel.Services,
-                    handler.ComponentModel.Implementation);
-            }
         }
     }
 }

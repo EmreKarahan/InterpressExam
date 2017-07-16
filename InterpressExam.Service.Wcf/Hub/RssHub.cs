@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using InterpressExam.Data;
 using InterpressExam.Entity;
 
 namespace InterpressExam.Service.Wcf.Hub

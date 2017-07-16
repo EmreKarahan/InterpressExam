@@ -8,10 +8,10 @@ namespace InterpressExam.Entity
     [Table("RssFile")]
     public partial class RssFile
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+       
         public RssFile()
         {
-            RssItem = new HashSet<RssItem>();
+         
         }
 
         public int Id { get; set; }
@@ -40,7 +40,6 @@ namespace InterpressExam.Entity
 
         public byte StatusId { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RssItem> RssItem { get; set; }
+
     }
 }

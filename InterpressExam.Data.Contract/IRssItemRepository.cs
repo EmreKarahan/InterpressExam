@@ -13,7 +13,9 @@ namespace InterpressExam.Data.Contract
         RssItem GetAdmin(Expression<Func<RssItem, bool>> predicate);
 
         IQueryable<RssItem> GetAdmins(Expression<Func<RssItem, bool>> predicate);
-        void Add(RssItem rssItem);
-        IEnumerable<RssFile> GetList();
+        void AddRssItem(RssItem rssItem);
+        IEnumerable<RssFile> RssFileGetList();
+
+        IEnumerable<RssItem> RssItemGetList();
     }
 }

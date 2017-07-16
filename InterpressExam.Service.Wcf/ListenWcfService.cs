@@ -15,6 +15,7 @@ namespace InterpressExam.Service.Wcf
 
         protected override void OnStart(string[] args)
         {
+            WindsorBootstrapper.Register();
             MyServiceHost?.Close();
 
             MyServiceHost = new ServiceHost(typeof(ListenService));

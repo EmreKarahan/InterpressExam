@@ -36,10 +36,7 @@ namespace InterpressExam.Data
                 .Property(e => e.Language)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<RssFile>()
-                .HasMany(e => e.RssItem)
-                .WithRequired(e => e.RssFile)
-                .WillCascadeOnDelete(false);
+      
 
             modelBuilder.Entity<RssItem>()
                 .Property(e => e.Link)

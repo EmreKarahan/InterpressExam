@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using InterpressExam.Data;
 using InterpressExam.Entity;
 using InterpressExam.Service.Wcf.Hub;
 using Microsoft.AspNet.SignalR;

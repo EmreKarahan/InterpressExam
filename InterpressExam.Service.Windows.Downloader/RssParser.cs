@@ -38,7 +38,7 @@ namespace InterpressExam.Service.Windows.Downloader
                     Link = item.Id
 
                 };
-                _rssItemRepository.Add(rssItem);
+                _rssItemRepository.AddRssItem(rssItem);
             }           
             ListenServiceClient aa = new ListenServiceClient();
             aa.FireDatabaseEvents();
@@ -47,7 +47,7 @@ namespace InterpressExam.Service.Windows.Downloader
 
         public void Execute(IJobExecutionContext context)
         {
-            var files = _rssItemRepository.GetList();
+            var files = _rssItemRepository.RssFileGetList();
 
             foreach (RssFile file in files)
             {

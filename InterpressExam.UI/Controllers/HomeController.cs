@@ -5,12 +5,16 @@ namespace InterpressExam.UI.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private IRssItemRepository _rssItemRepository;
+
+        public HomeController(IRssItemRepository rssItemRepository)
         {
+            _rssItemRepository = rssItemRepository;
         }
 
         public ActionResult Index()
         {
+            var rssList = _rssItemRepository.RssItemGetList();
             return View();
         }
 

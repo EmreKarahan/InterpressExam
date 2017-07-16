@@ -148,6 +148,10 @@
       <Project>{BA2ABA8D-0850-4B36-9DF6-BD85302BE9C5}</Project>
       <Name>InterpressExam.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InterpressExam.Infrastructure\InterpressExam.Infrastructure.csproj">
+      <Project>{F59A5AB2-D67A-4296-B5DE-09319EAF762F}</Project>
+      <Name>InterpressExam.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
