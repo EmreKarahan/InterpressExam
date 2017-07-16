@@ -1,5 +1,7 @@
-﻿using System.ServiceModel.Syndication;
+﻿using System.Linq;
+using System.ServiceModel.Syndication;
 using System.Xml;
+using InterpressExam.Entity;
 
 namespace InterpressExam.Service.Windows.Downloader
 {
@@ -7,15 +9,23 @@ namespace InterpressExam.Service.Windows.Downloader
     {
         static void Main(string[] args)
         {
-            var aa = GetFeed("http://www.milliyet.com.tr/rss/rssNew/magazinRss.xml");
+            RssContext entities = new RssContext();
+            var files = entities.RssFile.ToList();
+
+            foreach (RssFile file in files)
+            {
+                var aa = GetFeed(file);
+            }
+
+         
 
         }
 
-        public static SyndicationFeed GetFeed(string uri)
+        public static SyndicationFeed GetFeed(RssFile file)
         {
-            if (string.IsNullOrEmpty(uri)) return null;
+            if (string.IsNullOrEmpty(file.AtomLink)) return null;
             var rssFormatter = new Rss20FeedFormatter(); // for Atom you can use Atom10FeedFormatter()
-            var xmlReader = XmlReader.Create(uri);
+            var xmlReader = XmlReader.Create(file.AtomLink);
             rssFormatter.ReadFrom(xmlReader);
             return rssFormatter.Feed;
         }
