@@ -6,20 +6,13 @@ namespace InterpressExam.Service.Windows.Downloader
     {
         static void Main(string[] args)
         {
-
-           
-
-#if !DEBUG
-
             var servicesToRun = new ServiceBase[]
             {
                 new DownloadRssService()
             };
             ServiceBase.Run(servicesToRun);
-#endif
-#if DEBUG
-            new DownloadRssService().RegisterJobs();
-#endif
+
+
         }
     }
 }

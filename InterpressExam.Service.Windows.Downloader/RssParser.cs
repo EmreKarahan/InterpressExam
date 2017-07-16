@@ -40,8 +40,8 @@ namespace InterpressExam.Service.Windows.Downloader
                 };
                 _rssItemRepository.AddRssItem(rssItem);
             }           
-            ListenServiceClient aa = new ListenServiceClient();
-            aa.FireDatabaseEvents();
+            ListenServiceClient service = new ListenServiceClient();
+            service.FireDatabaseEvents();
 
         }
 
