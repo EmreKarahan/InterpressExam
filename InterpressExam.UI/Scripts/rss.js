@@ -1,6 +1,10 @@
 ﻿var data = [];
+var logData = [];
 var source = $("#some-template").html();
+
+
 var template = Handlebars.compile(source);
+
 $(function () {
 
 
@@ -27,8 +31,21 @@ $(function () {
         };
     
         $('#root').append(template(data));
-        console.log(data);
+
     };
+
+    chat.client.getMailLog = function (log) {
+        console.log(log);
+        //$('#log').empty();
+        //logData = {
+        //    log
+        //};
+
+        $('#log').append(log);
+ 
+    };
+
+
     // Start the connection.
     $.connection.hub.start().done(function () {
        chat.server.fetch();

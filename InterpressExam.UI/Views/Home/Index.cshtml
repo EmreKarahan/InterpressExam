@@ -2,8 +2,13 @@
     ViewBag.Title = "Home Page";
 }
 
-<div id="root">
-    @Html.Partial("_RssItems")
+<div>
+    <div  id="root" class="col-lg-8">
+        @Html.Partial("_RssItems")
+    </div>
+    <div id="log" class="col-lg-4">
+
+    </div>
 </div>
 
 @section scripts

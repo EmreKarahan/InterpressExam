@@ -4,142 +4,82 @@ using System.Collections.Generic;
 using System.Net.Mail;
 using System.Threading;
 using System.Threading.Tasks;
+using InterpressExam.Entity;
+using InterpressExam.Service.Wcf.Hub;
+using Microsoft.AspNet.SignalR;
 
 namespace InterpressExam.Service.Wcf.Mailer
 {
     public class Mailer
     {
-
-        private const int _clientcount = 1000;
-        private readonly SmtpClient[] _smtpClients = new SmtpClient[_clientcount + 1];
+        private readonly IHubContext _context = GlobalHost.ConnectionManager.GetHubContext<RssHub>();
         private CancellationTokenSource _cancelToken;
         private readonly BlockingCollection<string> _mailList;
+        private readonly RssItem _item;
 
-
-        public Mailer()
+        public Mailer(BlockingCollection<string> mailList, RssItem item)
         {
-            _mailList = new BlockingCollection<string>();
-            for (var i = 0; i < 1000; i++)
-            {
-                _mailList.Add("sampleEmail" + 1 + "@gmail.com");
-            }
-
-            SetupSmtpClients();
+            _mailList = mailList;
+            _item = item;
         }
 
-        public void StartEmailRun(List<object> data)
+        public void StartEmailRun()
         {
-            try
+            var t = Task.Run(() =>
             {
-                ParallelOptions po = new ParallelOptions();
-                //Create a cancellation token so you can cancel the task.
-                _cancelToken = new CancellationTokenSource();
-                po.CancellationToken = _cancelToken.Token;
-                //Manage the MaxDegreeOfParallelism instead of .NET Managing this. We dont need 500 threads spawning for this.
-                po.MaxDegreeOfParallelism = System.Environment.ProcessorCount * 2;
                 try
                 {
-                    Parallel.For(0, 100, index =>
+                    ParallelOptions po = new ParallelOptions();
+                    _cancelToken = new CancellationTokenSource();
+                    po.CancellationToken = _cancelToken.Token;
+                    po.MaxDegreeOfParallelism = Environment.ProcessorCount * 2;
+                    try
                     {
-                        var aaa = _mailList.Take();
-
-                        try
+                        Parallel.For(0, 100, index =>
                         {
-                            MailMessage msg = new MailMessage("gonderen@gmail.com", aaa);
-                            msg.Subject ="Subject";
-                            msg.Body = "Body";
-                            msg.Priority = MailPriority.Normal;
-                            //SendEmail(msg);
-                        }
-                        catch (Exception ex)
-                        {
-                            //Log error
-                        }
-                    });
-
-             
-                }
-                catch (OperationCanceledException e)
-                {
-                    //User has cancelled this request.
-                }
-            }
-            finally
-            {
-                disposeSMTPClients();
-            }
-        }
-
-        public void CancelEmailRun()
-        {
-            _cancelToken.Cancel();
-        }
-
-        private void SendEmail(MailMessage msg)
-        {
-            try
-            {
-                bool _gotlocked = false;
-                while (!_gotlocked)
-                {
-                    //Keep looping through all smtp client connections until one becomes available
-                    for (int i = 0; i <= _clientcount; i++)
-                    {
-                        if (System.Threading.Monitor.TryEnter(_smtpClients[i]))
-                        {
-                            try
+                            SemaphoreSlim maxThread = new SemaphoreSlim(10);
+                            for (int i = 0; i < 10; i++)
                             {
-                                _smtpClients[i].Send(msg);
+                                var email = _mailList.Take();
+                                maxThread.Wait(_cancelToken.Token);
+                                Task.Factory.StartNew(() =>
+                                        {
+                                            try
+                                            {
+                                                MailMessage msg = new MailMessage("gonderen@gmail.com", email)
+                                                {
+                                                    Subject = _item.Title,
+                                                    Body = _item.Description,
+                                                    Priority = MailPriority.Normal
+                                                };
+
+                                                _context.Clients.All.getMailLog(
+                                                    $"Process: {index}, Task:{i}, Email:{email}");
+
+                                                Console.WriteLine($"Process: {index}, Task:{i}, Email:{email}");
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                //Log error
+                                            }
+                                        }
+                                        , TaskCreationOptions.LongRunning)
+                                    .ContinueWith((task) => maxThread.Release(), _cancelToken.Token);
                             }
-                            finally
-                            {
-                                Monitor.Exit(_smtpClients[i]);
-                            }
-                            _gotlocked = true;
-                            break; // TODO: might not be correct. Was : Exit For
-                        }
+                        });
                     }
-                    //Do this to make sure CPU doesn't ramp up to 100%
-                    System.Threading.Thread.Sleep(1);
-                }
-            }
-            finally
-            {
-                msg.Dispose();
-            }
-        }
+                    catch (OperationCanceledException e)
+                    {
 
-        private void SetupSmtpClients()
-        {
-            for (int i = 0; i <= _clientcount; i++)
-            {
-                try
-                {
-                    SmtpClient _client = new SmtpClient("127.0.0.1", 25);
-                    //If your SMTP server requires authentication do the following below
-                    _client.Credentials = new System.Net.NetworkCredential("yourusername", "yourpassword", "yourdomain");
-                    _smtpClients[i] = _client;
+                    }
                 }
-                catch (Exception ex)
+                finally
                 {
-                    //Log Exception
-                }
-            }
-        }
 
-        private void disposeSMTPClients()
-        {
-            for (int i = 0; i <= _clientcount; i++)
-            {
-                try
-                {
-                    _smtpClients[i].Dispose();
                 }
-                catch (Exception ex)
-                {
-                    //Log Exception
-                }
-            }
+            });
+
+            t.Wait();
         }
     }
 }

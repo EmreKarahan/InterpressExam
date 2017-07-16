@@ -47,6 +47,7 @@ namespace InterpressExam.Service.Windows.Downloader
 
         public void Execute(IJobExecutionContext context)
         {
+            _rssItemRepository.EmptyTable();
             var files = _rssItemRepository.RssFileGetList();
 
             foreach (RssFile file in files)
