@@ -1,4 +1,4 @@
-﻿namespace TalTun.WCF.WCFServiceHost
+﻿namespace InterpressExam.Service.Windows.Downloader
 {
     partial class ProjectInstaller
     {
