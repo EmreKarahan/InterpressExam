@@ -27,7 +27,7 @@ namespace InterpressExam.Entity
         [StringLength(15)]
         public string Language { get; set; }
 
-        public DateTime? LastUpdateDate { get; set; }
+        public DateTimeOffset? LastUpdateDate { get; set; }
 
         public int Ttl { get; set; }
 

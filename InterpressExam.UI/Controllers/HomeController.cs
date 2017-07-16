@@ -8,5 +8,11 @@ namespace InterpressExam.UI.Controllers
         {
             return View();
         }
+
+        [ChildActionOnly]
+        public PartialViewResult RssItems()
+        {
+            return PartialView("_RssItems");
+        }
     }
 }

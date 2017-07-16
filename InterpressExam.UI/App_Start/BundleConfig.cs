@@ -29,6 +29,8 @@ namespace InterpressExam.UI
             bundles.Add(new ScriptBundle("~/bundles/handlebar").Include(
                 "~/Scripts/handlebars-v4.0.10.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/rss").Include(
+                "~/Scripts/rss.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
